@@ -177,9 +177,18 @@
 
 
 function totalIntegers(array) {
-
+    let integerCount = 0
+    let copy = array.splice()
     // base might be when there are no indices left to check (type check: array/integer)
+if (copy.length === 0) {
+    if (Array.isArray(copy[0])) {
+        return totalIntegers(copy[0])
+    }
+} else if (Array.isArray(copy[0])) {
+    return totalIntegers(copy[0])
+} else {
 
+}
     // recursive value:
     
     // if the first index is an array what is the length, if greater than 1 feed back into function.
