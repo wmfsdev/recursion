@@ -73,22 +73,22 @@
 // console.log(a)
 // console.log(b)
 
-// function contains(item, value) {
+function contains(item, value) {
 
-//     let copy = Object.assign({}, item)
+    let copy = Object.assign({}, item)
 
-//     if (item === undefined) {
-//         return false
-//     }
+    if (item === undefined) {
+        return false
+    }
     
-//     if (Object.values(copy).includes(value)) {
-//         return true
-//     }
+    if (Object.values(copy).includes(value)) {
+        return true
+    }
     
-//     else {
-//         return contains(item[Object.keys(copy)], value) 
-//     }
-// } 
+    else {
+        return contains(item[Object.keys(copy)], value) 
+    }
+} 
 // -------------
 
 // let test = [[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]
@@ -161,38 +161,41 @@
 // // }
 
 
+function totalIntegers(array){
+	if(array.length === 0) return 0;
 
-[[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]] // 6 loops
+	let total = 0;
+	let first = array.shift();
 
-[[5], 3] // 1 --- if index[x] is an array iterate through that index
-
-[4, [5, 6]] // 2
-
-[5, 6] // 2
-
-// keep drilling down into each array until index[x] is no longer an array
-
-
-// if index[1] (0) is not an array, is it an integer? if so count integer, if not 
-
-
-function totalIntegers(array) {
-    let integerCount = 0
-    let copy = array.splice()
-    // base might be when there are no indices left to check (type check: array/integer)
-if (copy.length === 0) {
-    if (Array.isArray(copy[0])) {
-        return totalIntegers(copy[0])
-    }
-} else if (Array.isArray(copy[0])) {
-    return totalIntegers(copy[0])
-} else {
-
+	if (Array.isArray(first)){
+		total += totalIntegers(first); 
+	} else if (Number.isInteger(first)) {
+		total += 1;
+	}
+    console.log("total: " + total)
+    console.log("function " + totalIntegers(array))
+	return total + totalIntegers(array);
 }
-    // recursive value:
-    
-    // if the first index is an array what is the length, if greater than 1 feed back into function.
-    // if 1 or less check if number, if number increase integer count by 1, if not number then run function again
 
-    // keep going until no indices left
-}
+let seven = totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]); // 7
+
+console.log(seven)
+
+
+// function totalIntegers(array, integerCount = 0) {
+
+//     let copy = array.flat(Infinity)
+
+//     if (copy.length === 0) {
+//         return integerCount
+//     }
+
+//     if (Number.isInteger(copy[0])) {
+//         integerCount++
+//         copy.splice(0,1)
+//         return totalIntegers(copy, integerCount)
+//     } else {
+//         copy.splice(0,1)
+//         return totalIntegers(copy, integerCount)
+//     }     
+// }
