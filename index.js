@@ -1,4 +1,4 @@
-// var allAreLessThanSeven = all([1,2,9], function(num){
+// var allAreLessThanSeven = all([1,8,2,3,4,5], function(num){
 // 	return num < 7;
 // });
 
@@ -9,8 +9,10 @@
 
 // 	if(copy.length === 0) return true;
 
-// 	if(callback(copy[0])){
+// 	if(callback(copy[0])){ 
+//          console.log(copy[0])
 // 		copy.shift(); // remove first element from array
+      
 // 		return all(copy, callback);
 // 	} else {
 // 		return false;
@@ -48,6 +50,7 @@
 // whilst "new" index 1 becomes former index 2
 // ad infinitum until length of array = 1 (base recursion value) 
 
+// -------------
 
 // let nestedObject = {
 //     test: 44,
@@ -85,10 +88,11 @@
 //     else {
 //         return contains(item[Object.keys(copy)], value) 
 //     }
-// }
+// } 
+// -------------
 
-let test = [[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]
-console.table(test)
+// let test = [[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]
+// console.table(test)
 
 
 //  function sumRange(value) {
@@ -103,7 +107,7 @@ console.table(test)
 //     }
 // }
 
-// console.log('sumRange = ' + sumRange(4))
+// console.log('sumRange = ' + sumRange(3))
 
 
 // function pow(x, n) {
@@ -156,3 +160,30 @@ console.table(test)
 // // }
 // // }
 
+
+
+[[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]] // 6 loops
+
+[[5], 3] // 1 --- if index[x] is an array iterate through that index
+
+[4, [5, 6]] // 2
+
+[5, 6] // 2
+
+// keep drilling down into each array until index[x] is no longer an array
+
+
+// if index[1] (0) is not an array, is it an integer? if so count integer, if not 
+
+
+function totalIntegers(array) {
+
+    // base might be when there are no indices left to check (type check: array/integer)
+
+    // recursive value:
+    
+    // if the first index is an array what is the length, if greater than 1 feed back into function.
+    // if 1 or less check if number, if number increase integer count by 1, if not number then run function again
+
+    // keep going until no indices left
+}
